@@ -8,7 +8,7 @@ export const searchRepos = (term: string) => {
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.SEARCH_REPOSITORIES,
-            payload:'loading...'
+            payload: 'loading...'
         });
         try {
 
