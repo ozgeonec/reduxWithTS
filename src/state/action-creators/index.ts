@@ -7,18 +7,17 @@ export const searchRepos = (term: string) => {
 
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
-            type: ActionType.SEARCH_REPOSITORIES,
-            payload: 'loading...'
+            type: ActionType.SEARCH_REPOSITORIES
         });
         try {
 
-            const {data} = await axios.get('https://registry.npm.js.org/-/v1/search', {
+            const {data} = await axios.get('https://registry.npmjs.org/-/v1/search', {
                 params: {
                     text: term
                 }
             });
 
-            const names = data.object.map((result: any) => {
+            const names = data?.objects.map((result: any) => {
                 return result.package.name;
             });
 

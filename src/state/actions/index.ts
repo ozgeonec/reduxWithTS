@@ -2,7 +2,6 @@ import {ActionType} from "../action-types";
 
 interface SearchRepositoriesAction {
     type: ActionType.SEARCH_REPOSITORIES;
-    payload: string;
 }
 
 interface SearchRepositoriesSuccessAction {

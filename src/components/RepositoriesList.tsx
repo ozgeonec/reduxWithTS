@@ -1,14 +1,17 @@
 import React from "react";
 import {useState} from "react";
 import {useActions} from "../hooks/useActions";
-import {DefaultRootState, useSelector} from "react-redux";
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 
 const RepositoriesList: React.FC = () => {
 
     const [term, setTerm] = useState('');
     const {searchRepos} = useActions();
-   // const {data, error, loading} = useSelector((state: DefaultRootState) => state.repositories);
+    const {data, error, loading} = useTypedSelector((state) => state.repositories);
+
+    //const state = useSelector((state:any) => state.repositories)
+
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -23,6 +26,9 @@ const RepositoriesList: React.FC = () => {
                 <input value={term} onChange={e => setTerm(e.target.value)}/>
                 <button>Search</button>
             </form>
+            {error && <h3>{error}</h3>}
+            {loading && <h3>...loading</h3>}
+            {!error && !loading && data && <h3>{data}</h3>}
         </div>
     );
 }
