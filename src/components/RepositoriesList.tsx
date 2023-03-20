@@ -10,14 +10,11 @@ const RepositoriesList: React.FC = () => {
     const {searchRepos} = useActions();
     const {data, error, loading} = useTypedSelector((state) => state.repositories);
 
-    //const state = useSelector((state:any) => state.repositories)
-
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         searchRepos(term);
-
     };
 
     return (
